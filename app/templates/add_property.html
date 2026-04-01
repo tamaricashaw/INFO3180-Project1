@@ -18,14 +18,12 @@
                  <form action="{{ url_for('create_property') }}" method="post" enctype="multipart/form-data" class="form-container">
                 {{ form.csrf_token }}
                 
-                <!-- Title Field -->
                 <div class="form-group">
                     {{ form.title.label(class="form-label") }}
                     {{ form.title(class="form-control") }}
     
                 </div>
 
-                <!-- Description Field -->
                 <div class="form-group">
                     {{ form.description.label(class="form-label") }}
                     {{ form.description(class="form-control", rows="4") }}
@@ -33,7 +31,6 @@
                 </div>
 
                 <div class="row">
-                    <!-- Bedrooms Field -->
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.bedrooms.label(class="form-label") }}
@@ -42,7 +39,6 @@
                         </div>
                     </div>
 
-                    <!-- Bathrooms Field -->
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.bathrooms.label(class="form-label") }}
@@ -52,7 +48,6 @@
                     </div>
                 </div>
 
-                <!-- Location Field -->
                 <div class="form-group">
                     {{ form.location.label(class="form-label") }}
                     {{ form.location(class="form-control", placeholder="e.g. Mona") }}
@@ -60,7 +55,6 @@
                 </div>
 
                 <div class="row">
-                    <!-- Price Field -->
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.price.label(class="form-label") }}
@@ -69,7 +63,6 @@
                         </div>
                     </div>
 
-                    <!-- Property Type Field -->
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form.property_type.label(class="form-label") }}
@@ -79,7 +72,6 @@
                     </div>
                 </div>
 
-                <!-- Photo Upload Field -->
                 <div class="form-group">
                     {{ form.photo.label(class="form-label") }}
                     {{ form.photo(class="form-control", type="file") }}
@@ -87,7 +79,6 @@
                     
                 </div>
 
-                <!-- Submit Button -->
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-lagoon btn-lg">Add Property</button>
                 </div>

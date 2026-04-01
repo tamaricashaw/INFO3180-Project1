@@ -5,7 +5,6 @@ from wtforms.validators import DataRequired, ValidationError
 from decimal import Decimal
 
 class PropertyForm(FlaskForm):
-    # Text fields with validation
     title = StringField('Property Title', validators=[
         DataRequired(message='Title is required'),
     ])
@@ -26,18 +25,15 @@ class PropertyForm(FlaskForm):
         DataRequired(message='Price is required'),
     ], places=2)
     
-    # Select field for property type
     property_type = SelectField('Property Type', choices=[
         ('house', 'House'),
         ('apartment', 'Apartment')
     ], validators=[DataRequired(message='Please select a property type')])
     
-    # Textarea field for description
     description = TextAreaField('Description', validators=[
         DataRequired(message='Description is required'),
     ])
     
-    # File upload field
     photo = FileField('Photo', validators=[
         FileRequired(message='Please select a photo'),
         FileAllowed(['jpg', 'jpeg', 'png', 'gif'], 'Images only! (jpg, jpeg, png, gif)')
