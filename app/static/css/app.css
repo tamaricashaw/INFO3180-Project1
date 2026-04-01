@@ -1,3 +1,66 @@
+
+
+
 body {
     padding-top: 5rem;
+    background-color:#fcfcfc
+    ;
+   
+}
+
+.headers{
+    background-color: #67bed9;
+}
+
+
+/* Add these styles to your existing app.css file */
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-wrapper {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+/* Style validation errors */
+.text-danger small {
+    display: block;
+    margin-top: 0.25rem;
+}
+
+/* Style file input */
+.form-control-file {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+}
+
+.btn-lagoon {
+    background-color: #67bed9;
+    border-color: #67bed9;
+    color: white;
+}
+.btn-lagoon:hover {
+    background-color: #56aac4;
+    border-color: #56aac4;
 }

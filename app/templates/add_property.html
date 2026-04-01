@@ -1,58 +1,103 @@
 {% extends "base.html" %}
 
-{% block css %}{% endblock %}
+{% block css %}
+<!-- If you created a separate forms.css file, include it here -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+{% endblock %}
 
 {% block main %}
 
-<h1 class="page-header">Add a New Property</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="page-header mb-4">Add New Property</h1>
+            
+            {% include 'flash_messages.html' %}
 
-{% include 'flash_messages.html' %}
-
-<form action="{{ url_for('create_property') }}" method="post" enctype="multipart/form-data">
-    {{ form.csrf_token }}
+             <div class="form-wrapper">
+                 <form action="{{ url_for('create_property') }}" method="post" enctype="multipart/form-data" class="form-container">
+                {{ form.csrf_token }}
+                
+                <!-- Title Field -->
+                <div class="form-group">
+                    {{ form.title.label(class="form-label") }}
+                    {{ form.title(class="form-control") }}
     
-    <div>
-        {{ form.title.label }}
-        {{ form.title }}
-    </div>
+                </div>
 
-    <div>
-        {{ form.description.label }}
-        {{ form.description }}
-    </div>
+                <!-- Description Field -->
+                <div class="form-group">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control", rows="4") }}
+                   
+                </div>
 
-    <div>
-        {{ form.bedrooms.label }}
-        {{ form.bedrooms }}
-    </div>
+                <div class="row">
+                    <!-- Bedrooms Field -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.bedrooms.label(class="form-label") }}
+                            {{ form.bedrooms(class="form-control", type="number", min="1", placeholder="e.g. 3") }}
+                            
+                        </div>
+                    </div>
 
-    <div>
-        {{ form.bathrooms.label }}
-        {{ form.bathrooms }}
-    </div>
+                    <!-- Bathrooms Field -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.bathrooms.label(class="form-label") }}
+                            {{ form.bathrooms(class="form-control", type="number", min="1", placeholder="e.g. 2") }}
+                            
+                        </div>
+                    </div>
+                </div>
 
-    <div>
-        {{ form.location.label }}
-        {{ form.location }}
-    </div>
+                <!-- Location Field -->
+                <div class="form-group">
+                    {{ form.location.label(class="form-label") }}
+                    {{ form.location(class="form-control", placeholder="e.g. Mona") }}
+                   
+                </div>
 
-    <div>
-        {{ form.price.label }}
-        {{ form.price }}
-    </div>
+                <div class="row">
+                    <!-- Price Field -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.price.label(class="form-label") }}
+                            {{ form.price(class="form-control", placeholder="e.g. 15000", step="0.01") }}
+                          
+                        </div>
+                    </div>
 
-    <div>
-        {{ form.property_type.label }}
-        {{ form.property_type }}
-    </div>
+                    <!-- Property Type Field -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.property_type.label(class="form-label") }}
+                            {{ form.property_type(class="form-select") }}
+                           
+                        </div>
+                    </div>
+                </div>
 
-    <div>
-        {{ form.photo.label }}
-        {{ form.photo }}
-    </div>
+                <!-- Photo Upload Field -->
+                <div class="form-group">
+                    {{ form.photo.label(class="form-label") }}
+                    {{ form.photo(class="form-control", type="file") }}
+                   
+                    
+                </div>
 
-    <button type="submit" name="submit">Add Property</button>
-</form>
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" name="submit" class="btn btn-lagoon btn-lg">Add Property</button>
+                </div>
+            </form>
+            </div>
+            
+           
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 

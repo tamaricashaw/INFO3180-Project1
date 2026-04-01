@@ -10,11 +10,11 @@ class PropertyForm(FlaskForm):
         DataRequired(message='Title is required'),
     ])
     
-    bedrooms = IntegerField('Number of Bedrooms', validators=[
+    bedrooms = IntegerField('No. Bedrooms', validators=[
         DataRequired(message='Number of bedrooms is required')
     ])
     
-    bathrooms = IntegerField('Number of Bathrooms', validators=[
+    bathrooms = IntegerField('No. Bathrooms', validators=[
         DataRequired(message='Number of bathrooms is required'),
     ])
     
@@ -38,7 +38,7 @@ class PropertyForm(FlaskForm):
     ])
     
     # File upload field
-    photo = FileField('Property Photo', validators=[
+    photo = FileField('Photo', validators=[
         FileRequired(message='Please select a photo'),
         FileAllowed(['jpg', 'jpeg', 'png', 'gif'], 'Images only! (jpg, jpeg, png, gif)')
     ])
