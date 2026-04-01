@@ -1,28 +1,51 @@
 {% extends "base.html" %}
 
-{% block css %}{% endblock %}
+{% block css %}
+<style>
+    /* Paste the CSS above here */
+</style>
+{% endblock %}
 
 {% block main %}
 
-<h1 class="page-header">{{ property.title }}</h1>
+<div class="property-details-container">
 
-<div>
-    <img src="{{ url_for('get_uploaded_file', filename=property.photo_filename) }}" alt="{{ property.title }}" width="200">
-    
-    <div>
-        <p>{{ property.description }}</p>
+    <div class="property-details">
+        <div class="property-image">
+            <img src="{{ url_for('get_uploaded_file', filename=property.photo_filename) }}" alt="{{ property.title }}">
+        </div>
         
-        <p><strong>Number of Bedrooms:</strong> {{ property.bedroom }}</p>
-        
-        <p><strong>Number of Bathrooms:</strong> {{ property.bathroom }}</p>
-        
-        <p><strong>Location:</strong> {{ property.location }}</p>
-        
-        <p><strong>Price:</strong> ${{ "{:,.2f}".format(property.price) }}</p>
-        
-        <p><strong>Property Type:</strong> {{ property.property_type|capitalize }}</p>
-        
-        <a href="#">Email Realtor</a>
+        <div class="property-info">
+            <h3 class="property-title-detail">{{ property.title }}</h3>
+            <div class="d-flex gap-2">
+                <div class="property-price-detail">${{ "{:,.2f}".format(property.price) }}</div>
+                <div class="property-type">{{ property.property_type|capitalize }}</div>
+            </div>
+            
+            
+            <div class="property-description">
+                {{ property.description }}
+            </div>
+            
+            <div class="property-features">
+                <div class="feature-item feature-bedrooms">
+                    <span class="feature-label">Bedrooms:</span>
+                    <span class="feature-value">{{ property.bedroom }}</span>
+                </div>
+                
+                <div class="feature-item feature-bathrooms">
+                    <span class="feature-label">Bathrooms:</span>
+                    <span class="feature-value">{{ property.bathroom }}</span>
+                </div>
+                
+                <div class="feature-item feature-location">
+                    <span class="feature-label">Location:</span>
+                    <span class="feature-value">{{ property.location }}</span>
+                </div>
+            </div>
+            
+            <a href="#" class="btn-email">Email Realtor</a>
+        </div>
     </div>
 </div>
 

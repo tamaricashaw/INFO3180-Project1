@@ -1,28 +1,37 @@
 {% extends "base.html" %}
 
-{% block css %}{% endblock %}
+{% block css %}
+
+{% endblock %}
 
 {% block main %}
 
-<h1 class="page-header">Properties</h1>
+<div class="properties-container">
+    <h1 class="page-header">Properties</h1>
 
-{% include 'flash_messages.html' %}
+    {% include 'flash_messages.html' %}
 
-{% if properties %}
-    {% for property in properties %}
-        <div class="property-item">
-            <img src="{{ url_for('get_uploaded_file', filename=property.photo_filename) }}" alt="{{ property.title }}" width="200">
-            <div>
-                <h3>{{ property.title }}</h3>
-                <p>{{ property.location }}</p>
-                <p>${{ "{:,.2f}".format(property.price) }}</p>
-                <a href="{{ url_for('property_detail', propertyid=property.id) }}">View Details</a>
-            </div>
+    {% if properties %}
+        <div class="properties-grid">
+            {% for property in properties %}
+                <div class="property-item">
+                    <img src="{{ url_for('get_uploaded_file', filename=property.photo_filename) }}" alt="{{ property.title }}">
+                    <div class="property-content">
+                        <h3 class="property-title">{{ property.title }}</h3>
+                        <div class="property-location">{{ property.location }}</div>
+                        <div class="property-price">${{ "{:,.2f}".format(property.price) }}</div>
+                        <a href="{{ url_for('property_detail', propertyid=property.id) }}" class="btn-details">View Details →</a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-{% else %}
-    <p>No properties found. <a href="{{ url_for('create_property') }}">Add your first property</a></p>
-{% endif %}
+    {% else %}
+        <div class="empty-state">
+            <p>No properties found.</p>
+            <a href="{{ url_for('create_property') }}">Add your first property</a>
+        </div>
+    {% endif %}
+</div>
 
 {% endblock %}
 
