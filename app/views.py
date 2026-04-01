@@ -6,7 +6,7 @@ This file contains the routes for your application.
 """
 
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import flash, render_template, request, redirect, url_for
 
 
 ###
@@ -23,6 +23,13 @@ def home():
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
+
+
+
+
+
+
+
 
 
 ###
